@@ -1,0 +1,120 @@
+body {
+  font-family: courier;
+  background-color: #111112;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.title h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.box-container {
+  width: 250px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.box-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.box {
+  position: relative;
+  background-color: #111112;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.box:hover img {
+  opacity: 0;
+}
+
+.hover-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  padding: 10px; /* Padding to prevent text from being too close to the edges */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.box:hover .hover-text {
+  opacity: 1;
+  pointer-events: auto;
+  font-size: 13px;
+}
+
+.box-container p {
+  margin-top: 12px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.about-section {
+  background-color: #1c1c1e;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.about-section h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.about-section p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
