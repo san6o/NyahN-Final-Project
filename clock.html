@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Time Zone Clock</title>
+	<link rel="stylesheet" href="clock.css" />
+  <script src="clock.js"></script>
+</head>
+<body>
+	<div class="main-container">
+		<!-- Analog Clock -->
+		<div class="clock">
+			<div id="clockface">
+				<div class="hand hour"></div>
+				<div class="hand min"></div>
+				<div class="hand sec"></div>
+				<div class="centerpoint"></div>
+				<div class="numbers one">1</div>
+				<div class="numbers two">2</div>
+				<div class="numbers three">3</div>
+				<div class="numbers four">4</div>
+				<div class="numbers five">5</div>
+				<div class="numbers six">6</div>
+				<div class="numbers seven">7</div>
+				<div class="numbers eight">8</div>
+				<div class="numbers nine">9</div>
+				<div class="numbers ten">10</div>
+				<div class="numbers eleven">11</div>
+				<div class="numbers twelve">12</div>
+				<div class="fiveminutes"></div>
+				<div class="minutes"></div>
+			</div>
+		</div>
+
+		<!-- Digital Clock and Date -->
+		<div id="digital-time">--:--:-- --</div>
+		<div id="date-display">loading date...</div>
+
+		<!-- Time Zone Dropdown -->
+		<select id="timezone-select">
+			<option value="local" selected>Default - Local Time</option>
+			<option value="Pacific/Honolulu">HT - Hawai'i Time</option>
+			<option value="America/Anchorage">AKT - Alaska Time</option>
+			<option value="America/Los_Angeles">PT - Pacific Time</option>
+			<option value="America/Denver">MT - Mountain Time</option>
+			<option value="America/Chicago">CT - Central Time</option>
+			<option value="America/New_York">ET - Eastern Time</option>
+		</select>
+
+		<!-- Set Custom Time -->
+		<div id="set-time">
+			<h2>Set Custom Time</h2>
+			<label for="hour">Hour:</label>
+			<select id="hour">
+				<!-- Populate from JS -->
+			</select>
+
+			<label for="minute">Minute:</label>
+			<select id="minute">
+				<!-- Populate from JS -->
+			</select>
+
+			<label for="ampm">AM/PM:</label>
+			<select id="ampm">
+				<option value="AM">AM</option>
+				<option value="PM">PM</option>
+			</select>
+
+			<button id="set-time-btn">Set Time</button>
+			<button id="clear-time-btn">Clear Custom Time</button>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
