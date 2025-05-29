@@ -1,0 +1,221 @@
+<!-- Isabella, Erika, Danika, Nyah -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="todo.css">
+<script defer src="todo.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Do List</title>
+  <style>
+    body {
+      background-color: #111112;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 2rem;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      padding: 1rem 2rem;
+      border: 3px solid black;
+      border-radius: 20px;
+      text-align: center;
+      background-color: white;
+      color: black;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    input, select, button {
+      font-family: 'Courier New', monospace;
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 0.5rem;
+      font-size: 16px;
+    }
+
+    button {
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e5e5e5;
+    }
+
+    #taskList {
+      list-style: none;
+      padding: 1rem;
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 500px;
+      background-color: white;
+      border-radius: 20px;
+      border: 2px solid black;
+    }
+
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+      border: 1px solid black;
+      border-radius: 15px;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+      color: black;
+    }
+
+    .task-text {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .task-date {
+      margin-right: 10px;
+      font-style: italic;
+    }
+
+    .task-item button {
+      margin-left: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      border-radius: 12px;
+    }
+
+    .task-item button:hover {
+      background-color: #ddd;
+    }
+
+    @media (max-width: 600px) {
+      input, select, button {
+        width: 90%;
+        font-size: 14px;
+      }
+
+      .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .task-item button {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>To Do List</h1>
+
+  <input type="text" id="task" placeholder="Enter a task" />
+  <select id="month">
+    <option value="" disabled selected>Select month</option>
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>
+
+  <select id="day">
+    <option value="" disabled selected>Select day</option>
+  </select>
+
+  <button onclick="printTask()">ADD</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function populateDays() {
+      const daySelect = document.getElementById("day");
+      daySelect.innerHTML = '<option value="" disabled selected>Select day</option>';
+      for (let i = 1; i <= 31; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        daySelect.appendChild(option);
+      }
+    }
+
+    window.onload = function () {
+      populateDays();
+    };
+
+    function printTask() {
+      const inputElement = document.getElementById("task");
+      const taskText = inputElement.value.trim();
+      const monthValue = document.getElementById("month").value;
+      const dayValue = document.getElementById("day").value;
+
+      if (taskText && monthValue && dayValue) {
+        const taskList = document.getElementById("taskList");
+        const newTaskItem = document.createElement("li");
+        newTaskItem.className = "task-item";
+
+        const taskTextElement = document.createElement("span");
+        taskTextElement.className = "task-text";
+        taskTextElement.textContent = taskText;
+
+        const taskDateElement = document.createElement("span");
+        taskDateElement.className = "task-date";
+        taskDateElement.textContent = `(${monthValue} ${dayValue})`;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "X";
+        deleteButton.onclick = function () {
+          taskList.removeChild(newTaskItem);
+        };
+
+        const prioritizeButton = document.createElement("button");
+        prioritizeButton.textContent = "Prioritize";
+        let isPrioritized = false;
+
+        prioritizeButton.onclick = function () {
+          if (isPrioritized) {
+            newTaskItem.style.fontWeight = "normal";
+            taskList.appendChild(newTaskItem);
+            prioritizeButton.textContent = "Prioritize";
+          } else {
+            newTaskItem.style.fontWeight = "bold";
+            taskList.prepend(newTaskItem);
+            prioritizeButton.textContent = "Undo";
+          }
+          isPrioritized = !isPrioritized;
+        };
+
+        newTaskItem.appendChild(taskTextElement);
+        newTaskItem.appendChild(taskDateElement);
+        newTaskItem.appendChild(prioritizeButton);
+        newTaskItem.appendChild(deleteButton);
+        taskList.appendChild(newTaskItem);
+
+        inputElement.value = "";
+        document.getElementById("month").selectedIndex = 0;
+        document.getElementById("day").selectedIndex = 0;
+      } else {
+        alert("Please enter both a task and a date!");
+      }
+    }
+  </script>
+</body>
+</html>
