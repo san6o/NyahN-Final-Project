@@ -1,127 +1,111 @@
-/* Reset and base */
 body {
 	width: 100%;
 	height: 100vh;
+	font-family: 'courier new', courier, monospace;
 	margin: 0;
 	padding: 0;
-	font-family: Courier, monospace;
-	background-color: #111112;
+	background-color: #f0f0f0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	color: #eee;
 }
 
 .main-container {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
-	gap: 20px;
-	padding: 20px;
-	max-width: 420px;
-	width: 100%;
 }
 
-/* Analog clock container */
 .clock {
 	width: 400px;
-	color: #eee;
+	color: #0b36a3;
 }
 
 #clockface {
 	position: relative;
+	display: block;
 	width: 340px;
 	height: 340px;
-	background: #222244;
-	border-radius: 50%; /* keep clock circular */
-	border: 6px solid #555577;
-	box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
-	margin: 0 auto;
+	background: white;
+	border-radius: 180px;
+	border: 10px solid #6e5544;
+	box-shadow: 0 0 3px 0px #6e5544;
 }
 
-/* Tick marks */
 .minutes,
 .fiveminutes {
 	position: absolute;
-	width: 4px;
-	top: 0;
-	left: 50%;
+	width: 3px;
+	top: 0px;
+	left: 49.5%;
 	transform-origin: 50% 170px;
-	border-radius: 2px;
 }
 
 .minutes {
-	height: 12px;
-	background: #8888aa;
+	height: 15px;
+	background: #7d9c70;
 }
 
 .fiveminutes {
-	height: 20px;
-	background: #ccccff;
+	height: 25px;
+	background: #5d7a51;
 	z-index: 1;
 }
 
-/* Clock hands */
 .hour,
 .min,
 .sec {
 	position: absolute;
-	border-radius: 8px;
+	border-radius: 7px;
 	transform-origin: 50% 100%;
 }
 
 .hour {
-	width: 10px;
+	width: 8px;
 	height: 130px;
 	top: 70px;
-	left: 50%;
-	background: #ccccff;
-	transition: transform 0.3s ease-in-out;
+	left: 49%;
+	background: #42372d;
+	transform-origin: 49% 100px;
 }
 
 .min {
 	width: 8px;
 	height: 160px;
 	top: 40px;
-	left: 50%;
-	background: #aaaaff;
-	transition: transform 0.3s ease-in-out;
+	left: 48.5%;
+	background: #42372d;
+	transform-origin: 48.5% 131px;
 }
 
 .sec {
 	width: 4px;
 	height: 160px;
 	top: 40px;
-	left: 50%;
-	background: #ffffff; /* changed from red to white */
-	transition: transform 0.1s linear;
+	left: 49%;
+	background: #779c4f;
+	transform-origin: 49% 131px;
 }
 
-/* Center dot */
 .centerpoint {
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
-	background-color: #ccccff;
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	background-color: #42372d;
 	position: absolute;
-	left: 156px;
-	top: 156px;
-	box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+	left: 158px;
+	top: 158px;
 }
 
-/* Numbers around clock */
 .numbers {
 	position: absolute;
 	font-size: 30px;
-	font-weight: 600;
-	font-family: Courier, monospace;
-	color: #ccccff;
-	user-select: none;
+	font-family: 'courier new', courier, monospace;
 }
 
-/* Position adjustments for numbers */
 .one { top: 40px; left: 225px; }
 .two { top: 85px; left: 275px; }
 .three { top: 155px; left: 295px; }
@@ -135,115 +119,52 @@ body {
 .eleven { top: 40px; left: 100px; }
 .twelve { top: 25px; left: 155px; }
 
-/* Digital time display */
 #digital-time {
-	font-size: 28px;
-	font-weight: 600;
-	color: #ccccff;
-	font-family: Courier, monospace;
-	margin-top: 15px;
+	font-size: 27px;
+	margin-top: 20px;
+	color: #0b36a3;
+	font-family: 'monaco';
 }
 
-/* Date display */
 #date-display {
 	margin-top: 5px;
 	font-size: 18px;
-	color: #8888aa;
-	font-family: Courier, monospace;
+	font-family: 'monaco';
+	color: #6e5544;
 }
 
-/* Timezone dropdown */
 #timezone-select {
-	width: 260px;
+	width: 250px;
 	margin-top: 20px;
-	font-family: Courier, monospace;
+	font-family: 'monaco';
 	font-size: 16px;
-	color: #ccccff;
-	background-color: #222244;
-	border: 1.5px solid #666688;
-	padding: 10px 14px;
-	border-radius: 12px;
-	box-shadow: 0 2px 6px rgba(204, 204, 255, 0.15);
-	transition: border-color 0.3s ease;
-	cursor: pointer;
+	color: #6e5544;
+	background-color: white;
+	border: 1px solid #6e5544;
+	padding: 8px 10px;
+	border-radius: 5px;
+	text-align: center;
 }
 
-#timezone-select:focus {
-	outline: none;
-	border-color: #ffffff; /* white border on focus */
-	box-shadow: 0 0 5px #ffffff;
-}
-
-/* Set Custom Time container */
 #set-time {
 	text-align: center;
 	margin-top: 20px;
-	font-size: 16px;
-	color: #aaaaff;
-	font-family: Courier, monospace;
-	background: #222244;
-	padding: 20px 25px;
-	border-radius: 16px;
-	box-shadow: 0 6px 12px rgba(170, 170, 255, 0.1);
-	width: 100%;
-	max-width: 400px;
+	font-size: 15px;
+	font-family: 'monaco';
+	color: #6e5544;
 }
 
-#set-time h2 {
-	margin-bottom: 16px;
-	color: #ccccff;
-	font-weight: 700;
-}
-
-/* Labels */
 #set-time label {
-	margin-right: 8px;
+	margin-right: 10px;
 	font-size: 18px;
-	color: #ccccff;
-	user-select: none;
+	color: #6e5544;
 }
 
-/* Inputs and buttons */
 #set-time select,
 #set-time button {
 	font-size: 18px;
-	margin: 8px 12px 8px 0;
-	padding: 8px 14px;
-	font-family: Courier, monospace;
-	color: #ffffff; /* changed from red to white */
-	border: 2px solid #ffffff; /* changed from red to white */
-	background-color: #222244;
-	border-radius: 12px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-	min-width: 80px;
-	box-sizing: border-box;
-}
-
-#set-time select:hover,
-#set-time button:hover {
-	background-color: #ffffff; /* changed from red to white */
-	color: #222244;
-	border-color: #ffffff;
-}
-
-#set-time button:active {
-	background-color: #cccccc; /* lighter white when active */
-	border-color: #cccccc;
-	color: #111112;
-}
-
-#set-time button {
-	font-weight: 600;
-}
-
-/* Responsive tweaks */
-@media (max-width: 480px) {
-	.clock {
-		width: 320px;
-	}
-	#clockface {
-		width: 280px;
-		height: 280px;
-	}
+	margin: 5px 10px;
+	padding: 5px;
+	font-family: 'monaco';
+	color: #0b36a3;
 }
