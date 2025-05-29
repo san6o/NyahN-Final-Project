@@ -125,7 +125,6 @@ timezoneSelect.addEventListener('change', function () {
 	currentTimeZone = this.value;
 	customTime = null; // stop using custom time if it's active
 	clearInterval(customTimeInterval); // also stop its ticking
-	customTimeInterval = null;
 });
 
 // clicking set time
@@ -143,7 +142,7 @@ setTimeBtn.addEventListener('click', () => {
 		hour: hour24,
 		minute: minute,
 		second: 0,
-		date: "Custom Time"
+		date: "custom time"
 	};
 
 	// stop any existing custom interval before starting new one
@@ -168,16 +167,20 @@ setTimeBtn.addEventListener('click', () => {
 		if (customTime.hour === 24) {
 			customTime.hour = 0;
 		}
+
+		setTime();
 	}, 1000);
+
+	setTime();
 });
 
-// clear custom time on button click
+// clicking clear custom time button
 clearTimeBtn.addEventListener('click', () => {
 	customTime = null;
 	clearInterval(customTimeInterval);
-	customTimeInterval = null;
+	setTime();
 });
 
-// update clock every 1 second
+// update the clock every second
 setInterval(setTime, 1000);
-setTime(); // initial call to display immediately
+setTime(); // set right away on load
