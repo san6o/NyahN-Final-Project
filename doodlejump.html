@@ -1,38 +1,81 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport", content="width=device-width, initial-scale=1.0">
-        <title>doodle jump</title>
-        <link rel="stylesheet" href="doodlejump.css">
-        <script src="doodlejump.js"></script>
-    </head>
-    <style>
-        p {
-            font-family: 'courier', monospace;
-            font-size: 20px;
-            color: black;
-        }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doodle Jump</title>
+  <link rel="stylesheet" href="doodlejump.css" />
+  <script defer src="doodlejump.js"></script>
+  <style>
+    body {
+      text-align: center;
+      background: #aed901;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+    }
 
-        #start-button {
-            font-size: 20px;
-            padding: 10px 20px;
-            background-color: rgb(111,153,50);
-            color: black;
-            border: none;
-            cursor: pointer;
-            font-family: 'courier', monospace;
-        }
+    #board {
+      background-image: url("https://github.com/ImKennyYip/doodle-jump/blob/master/doodlejumpbg.png?raw=true");
+      display: block;
+      margin: 20px auto;
+      border: 3px solid #333;
+      border-radius: 12px;
+    }
 
-        #start-button:hover {
-            background-color: rgb(65,94,22);
-        }
-    </style>
-    <body>
-      <img align=left src="https://github.com/ImKennyYip/doodle-jump/blob/master/doodler-right.png?raw=true" width=200 height=200>
-        <canvas id="board"></canvas>
-      <img align=right src="https://github.com/ImKennyYip/doodle-jump/blob/master/doodler-left.png?raw=true" width=200 height=200>
-      <p>doodle jump is so awesome</p>
-      <button id="start-button">start game</button> <!-- start button -->
-    </body>
+    #start-button {
+      font-size: 20px;
+      padding: 12px 24px;
+      background-color: rgb(111, 153, 50);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    #start-button:hover {
+      background-color: rgb(65, 94, 22);
+    }
+
+    p {
+      font-size: 20px;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .side-img {
+      width: 100px;
+      height: auto;
+      position: absolute;
+      top: 20px;
+    }
+
+    .left-img {
+      left: 10px;
+    }
+
+    .right-img {
+      right: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .side-img {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="https://github.com/ImKennyYip/doodle-jump/blob/master/doodler-right.png?raw=true" class="side-img left-img" />
+
+  <canvas id="board"></canvas>
+
+  <img src="https://github.com/ImKennyYip/doodle-jump/blob/master/doodler-left.png?raw=true" class="side-img right-img" />
+
+  <p>doodle jump is so awesome</p>
+  <button id="start-button">Start Game</button>
+</body>
 </html>
