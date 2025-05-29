@@ -1,0 +1,170 @@
+body {
+	width: 100%;
+	height: 100vh;
+	font-family: 'courier new', courier, monospace;
+	margin: 0;
+	padding: 0;
+	background-color: #f0f0f0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.clock {
+	width: 400px;
+	color: #0b36a3;
+}
+
+#clockface {
+	position: relative;
+	display: block;
+	width: 340px;
+	height: 340px;
+	background: white;
+	border-radius: 180px;
+	border: 10px solid #6e5544;
+	box-shadow: 0 0 3px 0px #6e5544;
+}
+
+.minutes,
+.fiveminutes {
+	position: absolute;
+	width: 3px;
+	top: 0px;
+	left: 49.5%;
+	transform-origin: 50% 170px;
+}
+
+.minutes {
+	height: 15px;
+	background: #7d9c70;
+}
+
+.fiveminutes {
+	height: 25px;
+	background: #5d7a51;
+	z-index: 1;
+}
+
+.hour,
+.min,
+.sec {
+	position: absolute;
+	border-radius: 7px;
+	transform-origin: 50% 100%;
+}
+
+.hour {
+	width: 8px;
+	height: 130px;
+	top: 70px;
+	left: 49%;
+	background: #42372d;
+	transform-origin: 49% 100px;
+}
+
+.min {
+	width: 8px;
+	height: 160px;
+	top: 40px;
+	left: 48.5%;
+	background: #42372d;
+	transform-origin: 48.5% 131px;
+}
+
+.sec {
+	width: 4px;
+	height: 160px;
+	top: 40px;
+	left: 49%;
+	background: #779c4f;
+	transform-origin: 49% 131px;
+}
+
+.centerpoint {
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	background-color: #42372d;
+	position: absolute;
+	left: 158px;
+	top: 158px;
+}
+
+.numbers {
+	position: absolute;
+	font-size: 30px;
+	font-family: 'courier new', courier, monospace;
+}
+
+.one { top: 40px; left: 225px; }
+.two { top: 85px; left: 275px; }
+.three { top: 155px; left: 295px; }
+.four { top: 220px; left: 275px; }
+.five { top: 265px; left: 230px; }
+.six { top: 280px; left: 160px; }
+.seven { top: 265px; left: 95px; }
+.eight { top: 220px; left: 50px; }
+.nine { top: 155px; left: 30px; }
+.ten { top: 85px; left: 45px; }
+.eleven { top: 40px; left: 100px; }
+.twelve { top: 25px; left: 155px; }
+
+#digital-time {
+	font-size: 27px;
+	margin-top: 20px;
+	color: #0b36a3;
+	font-family: 'monaco';
+}
+
+#date-display {
+	margin-top: 5px;
+	font-size: 18px;
+	font-family: 'monaco';
+	color: #6e5544;
+}
+
+#timezone-select {
+	width: 250px;
+	margin-top: 20px;
+	font-family: 'monaco';
+	font-size: 16px;
+	color: #6e5544;
+	background-color: white;
+	border: 1px solid #6e5544;
+	padding: 8px 10px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#set-time {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 15px;
+	font-family: 'monaco';
+	color: #6e5544;
+}
+
+#set-time label {
+	margin-right: 10px;
+	font-size: 18px;
+	color: #6e5544;
+}
+
+#set-time select,
+#set-time button {
+	font-size: 18px;
+	margin: 5px 10px;
+	padding: 5px;
+	font-family: 'monaco';
+	color: #0b36a3;
+}
