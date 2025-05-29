@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'courier';
+            background-image: url(https://t4.ftcdn.net/jpg/03/62/05/31/360_F_362053188_oQ0WRHCFkIY4QlXS1S5d1i9bpYup67ll.jpg);
+            background-size: cover;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: courier;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        button {
+            color: #016f32;
+            width: 150px;
+            background: white;
+            padding: 5px 0;
+            font-weight: bold;
+            border: none;
+            border-radius: 2px;
+            font-family: courier;
+            margin: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blackjack</h1>
+        <p id="message-el">Want to play a round?</p>
+        <p id="cards-el">Cards:</p>
+        <p id="sum-el">Sum:</p>
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="drawCard()">New Card</button>
+        <p id="player-el">Player Name: </p>
+        <button onclick="changePlayerName()">Nyah</button>
+    </div>
+
+    <script>
+        function changePlayerName() {
+            let playerName = "Nyah";
+            document.getElementById("player-el").textContent = "Player: " + playerName;
+        }
+
+        let cards = []
+        let sum = 0
+        let hasBlackJack = false
+        let isAlive = false
+        let message = ""
+
+        const messageEl = document.getElementById("message-el")
+        const sumEl = document.getElementById("sum-el")
+        const cardsEl = document.getElementById("cards-el")
+        const playerEl = document.getElementById("player-el")
+
+        function getRandomCard() {
+            let randomNumber = Math.floor(Math.random() * 13 + 1);
+            if (randomNumber > 10) {
+                return 10
+            } else if (randomNumber === 1) {
+                return 11
+            } else {
+                return randomNumber
+            }
+        }
+
+        function startGame() {
+            isAlive = true;
+            let cardOne = getRandomCard();
+            let cardTwo = getRandomCard();
+            cards = [cardOne, cardTwo];
+            sum = cardOne + cardTwo;
+            renderGame();
+        }
+
+        function renderGame() {
+            cardsEl.textContent = "Cards: " + cards.join(" ");
+            sumEl.textContent = "Sum: " + sum;
+
+            if (sum < 21) {
+                message = "Do you want to draw a new card?";
+            } else if (sum === 21) {
+                message = "You've got Blackjack";
+                hasBlackJack = true;
+            } else {
+                message = "You lost!";
+                isAlive = false;
+            }
+            messageEl.textContent = message;
+        }
+
+        function drawCard() {
+            if (isAlive === true) {
+                let card = getRandomCard();
+                sum += card;
+                cards.push(card);
+                renderGame();
+            }
+        }
+    </script>
+</body>
+</html>
