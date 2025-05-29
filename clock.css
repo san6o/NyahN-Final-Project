@@ -1,0 +1,249 @@
+/* Reset and base */
+body {
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: Courier, monospace;
+	background-color: #111112;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #eee;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 20px;
+	padding: 20px;
+	max-width: 420px;
+	width: 100%;
+}
+
+/* Analog clock container */
+.clock {
+	width: 400px;
+	color: #eee;
+}
+
+#clockface {
+	position: relative;
+	width: 340px;
+	height: 340px;
+	background: #222244;
+	border-radius: 50%; /* keep clock circular */
+	border: 6px solid #555577;
+	box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+	margin: 0 auto;
+}
+
+/* Tick marks */
+.minutes,
+.fiveminutes {
+	position: absolute;
+	width: 4px;
+	top: 0;
+	left: 50%;
+	transform-origin: 50% 170px;
+	border-radius: 2px;
+}
+
+.minutes {
+	height: 12px;
+	background: #8888aa;
+}
+
+.fiveminutes {
+	height: 20px;
+	background: #ccccff;
+	z-index: 1;
+}
+
+/* Clock hands */
+.hour,
+.min,
+.sec {
+	position: absolute;
+	border-radius: 8px;
+	transform-origin: 50% 100%;
+}
+
+.hour {
+	width: 10px;
+	height: 130px;
+	top: 70px;
+	left: 50%;
+	background: #ccccff;
+	transition: transform 0.3s ease-in-out;
+}
+
+.min {
+	width: 8px;
+	height: 160px;
+	top: 40px;
+	left: 50%;
+	background: #aaaaff;
+	transition: transform 0.3s ease-in-out;
+}
+
+.sec {
+	width: 4px;
+	height: 160px;
+	top: 40px;
+	left: 50%;
+	background: #ffffff; /* changed from red to white */
+	transition: transform 0.1s linear;
+}
+
+/* Center dot */
+.centerpoint {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background-color: #ccccff;
+	position: absolute;
+	left: 156px;
+	top: 156px;
+	box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+/* Numbers around clock */
+.numbers {
+	position: absolute;
+	font-size: 30px;
+	font-weight: 600;
+	font-family: Courier, monospace;
+	color: #ccccff;
+	user-select: none;
+}
+
+/* Position adjustments for numbers */
+.one { top: 40px; left: 225px; }
+.two { top: 85px; left: 275px; }
+.three { top: 155px; left: 295px; }
+.four { top: 220px; left: 275px; }
+.five { top: 265px; left: 230px; }
+.six { top: 280px; left: 160px; }
+.seven { top: 265px; left: 95px; }
+.eight { top: 220px; left: 50px; }
+.nine { top: 155px; left: 30px; }
+.ten { top: 85px; left: 45px; }
+.eleven { top: 40px; left: 100px; }
+.twelve { top: 25px; left: 155px; }
+
+/* Digital time display */
+#digital-time {
+	font-size: 28px;
+	font-weight: 600;
+	color: #ccccff;
+	font-family: Courier, monospace;
+	margin-top: 15px;
+}
+
+/* Date display */
+#date-display {
+	margin-top: 5px;
+	font-size: 18px;
+	color: #8888aa;
+	font-family: Courier, monospace;
+}
+
+/* Timezone dropdown */
+#timezone-select {
+	width: 260px;
+	margin-top: 20px;
+	font-family: Courier, monospace;
+	font-size: 16px;
+	color: #ccccff;
+	background-color: #222244;
+	border: 1.5px solid #666688;
+	padding: 10px 14px;
+	border-radius: 12px;
+	box-shadow: 0 2px 6px rgba(204, 204, 255, 0.15);
+	transition: border-color 0.3s ease;
+	cursor: pointer;
+}
+
+#timezone-select:focus {
+	outline: none;
+	border-color: #ffffff; /* white border on focus */
+	box-shadow: 0 0 5px #ffffff;
+}
+
+/* Set Custom Time container */
+#set-time {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 16px;
+	color: #aaaaff;
+	font-family: Courier, monospace;
+	background: #222244;
+	padding: 20px 25px;
+	border-radius: 16px;
+	box-shadow: 0 6px 12px rgba(170, 170, 255, 0.1);
+	width: 100%;
+	max-width: 400px;
+}
+
+#set-time h2 {
+	margin-bottom: 16px;
+	color: #ccccff;
+	font-weight: 700;
+}
+
+/* Labels */
+#set-time label {
+	margin-right: 8px;
+	font-size: 18px;
+	color: #ccccff;
+	user-select: none;
+}
+
+/* Inputs and buttons */
+#set-time select,
+#set-time button {
+	font-size: 18px;
+	margin: 8px 12px 8px 0;
+	padding: 8px 14px;
+	font-family: Courier, monospace;
+	color: #ffffff; /* changed from red to white */
+	border: 2px solid #ffffff; /* changed from red to white */
+	background-color: #222244;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	min-width: 80px;
+	box-sizing: border-box;
+}
+
+#set-time select:hover,
+#set-time button:hover {
+	background-color: #ffffff; /* changed from red to white */
+	color: #222244;
+	border-color: #ffffff;
+}
+
+#set-time button:active {
+	background-color: #cccccc; /* lighter white when active */
+	border-color: #cccccc;
+	color: #111112;
+}
+
+#set-time button {
+	font-weight: 600;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+	.clock {
+		width: 320px;
+	}
+	#clockface {
+		width: 280px;
+		height: 280px;
+	}
+}
